@@ -1,0 +1,99 @@
+programa
+{
+	// 1. Função com parâmetros e COM retorno
+	funcao real calcularDesconto(real precoOriginal, real percentualDesconto)
+	{
+		real precoFinal = precoOriginal - (precoOriginal * (percentualDesconto / 100.0))
+		retorne precoFinal
+	}
+
+	// 2. Função com parâmetros e SEM retorno
+	funcao aplicarDesconto(real precoOriginal, real percentualDesconto, cadeia nomeProduto)
+	{
+		real precoFinal = calcularDesconto(precoOriginal, percentualDesconto)
+		mostrarResumoCompra(nomeProduto, precoOriginal, precoFinal)
+	}
+
+	// 3. Função com parâmetros e SEM retorno
+	funcao mostrarResumoCompra(cadeia nome, real precoOriginal, real precoComDesconto)
+	{
+		escreva("\n==== RESUMO DA COMPRA ====\n")
+		escreva("Produto: ", nome, "\n")
+		escreva("Preço original: R$ ", precoOriginal, "\n")
+		escreva("Preço com desconto: R$ ", precoComDesconto, "\n")
+		escreva("===========================\n")
+	}
+
+	// 4. Função SEM parâmetros e SEM retorno
+	funcao mostrarMenu()
+	{
+		inteiro opcao, produto
+		cadeia feedback
+
+		escreva("\n==== MENU ====\n")
+		escreva("1- Comprar\n")
+		escreva("2- Deixar feedback\n")
+		escreva("3- Sair\n")
+		escreva("Escolha uma opção: ")
+		leia(opcao)
+
+		escolha (opcao)
+		{
+			caso 1:
+				escreva("\n==== Escolha o produto ====\n")
+				escreva("1- Pinheirinho de Natal\n")
+				escreva("2- Pisca-pisca\n")
+				escreva("3- Guirlandas\n")
+				escreva("4- Louças\n")
+				escreva("5- Mini Papai Noel\n")
+				escreva("6- Presépios\n")
+				escreva("Digite a opção do produto: ")
+				leia(produto)
+
+				escolha (produto)
+				{
+					caso 1:
+						aplicarDesconto(100.0, 15.0, "Pinheirinho de Natal")
+						pare
+					caso 2:
+						aplicarDesconto(40.0, 10.0, "Pisca-pisca")
+						pare
+					caso 3:
+						aplicarDesconto(60.0, 10.0, "Guirlandas")
+						pare
+					caso 4:
+						aplicarDesconto(80.0, 5.0, "Louças")
+						pare
+					caso 5:
+						aplicarDesconto(25.0, 5.0, "Mini Papai Noel")
+						pare
+					caso 6:
+						aplicarDesconto(150.0, 20.0, "Presépios")
+						pare
+					caso contrario:
+						escreva("\nProduto inválido!\n")
+				}
+				pare
+
+			caso 2:
+				escreva("\nDeixe seu feedback: ")
+				leia(feedback)
+				escreva("\nAgradecemos seu feedback: \"", feedback, "\"\n")
+				pare
+
+			caso 3: 
+				escreva("\nObrigado pela preferência!\n")
+				escreva("== Feliz Natal ==\n")
+				pare
+
+			caso contrario:
+				escreva("\nOpção inválida!\n")
+		}
+	}
+
+	// Programa Principal
+	funcao inicio()
+	{
+		mostrarMenu()
+	}
+}
